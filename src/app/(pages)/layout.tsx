@@ -1,14 +1,16 @@
 "use client"
 import { Inter } from "next/font/google";
 import "../globals.css";
-import logo from "../../../public/SETEP-logo.png"
+import logo from "@@/SETEP-logo.png"
 import Image from "next/image";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { ConfigProvider, Layout, Menu, Flex } from "antd";
+import { ConfigProvider, Layout, Menu, Flex, Spin } from "antd";
 import { orange } from "@ant-design/colors";
 import React from 'react';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-
+import { SessionProvider } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const { Header, Content, Sider } = Layout;
 
@@ -22,58 +24,94 @@ const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].
 
 const inter = Inter({ subsets: ["latin"] });
 
+export function AppLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  console.log(`Status: ${status}`)
+
+  if (status === 'loading') {
+    return (
+      <Layout style={{ minHeight: '100vh' }}>
+        <Content style={{ margin: '0.5rem' }}>
+          <Flex align="center" justify="center" style={{ width: '100%', minHeight: '100vh' }}>
+            <Spin></Spin>
+          </Flex>
+        </Content>
+      </Layout>
+    )
+  }
+
+  if (status === 'authenticated') {
+    return (
+      <Layout>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+          style={{
+            backgroundColor: '#fff',
+            padding: '1rem 0'
+          }}
+        >
+          <Flex justify="center" style={{
+            marginBottom: '1rem'
+          }}><Image alt='SETEP' src={logo} width={100}></Image></Flex>
+          <Menu mode="inline" defaultSelectedKeys={['4']} items={items} />
+        </Sider>
+        <Layout style={{ minHeight: '100vh' }}>
+          <Header style={{ padding: 0, backgroundColor: '#fff' }} />
+          <Content style={{ margin: '0.5rem' }}>
+            <div
+              style={{
+                padding: '0.5rem',
+                minHeight: 360,
+              }}
+            >
+              {children}
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
+    )
+  }
+
+  if (status === 'unauthenticated') {
+    router.push('/login')
+  }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: orange[5],
-            },
-          }}
-        >
-          <AntdRegistry>
-            <Layout>
-              <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={(broken) => {
-                  console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                  console.log(collapsed, type);
-                }}
-                style={{
-                  backgroundColor: '#fff',
-                  padding: '1rem 0'
-                }}
-              >
-                <Flex justify="center" style={{
-                  marginBottom: '1rem'
-                }}><Image alt='SETEP' src={logo} width={100}></Image></Flex>
-                <Menu mode="inline" defaultSelectedKeys={['4']} items={items} />
-              </Sider>
-              <Layout style={{ minHeight: '100vh' }}>
-                <Header style={{ padding: 0, backgroundColor: '#fff' }} />
-                <Content style={{ margin: '0.5rem' }}>
-                  <div
-                    style={{
-                      padding: '0.5rem',
-                      minHeight: 360,
-                    }}
-                  >
-                    {children}
-                  </div>
-                </Content>
-              </Layout>
-            </Layout>
-          </AntdRegistry>
-        </ConfigProvider>
+        <SessionProvider>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: orange[5],
+              },
+            }}
+          >
+            <AntdRegistry>
+              <AppLayout>{children}</AppLayout>
+            </AntdRegistry>
+          </ConfigProvider>
+        </SessionProvider>
       </body>
     </html>
   );

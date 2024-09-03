@@ -1,8 +1,8 @@
 "use client"
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import Image from 'next/image';
 import profile from '../../../public/user.png'
-import { Card, Form, Col, Row, Input, Button, Flex } from 'antd';
+import { Card, Form, Col, Row, Input } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 
 const tabListPersonal = [
