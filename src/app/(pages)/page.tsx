@@ -210,7 +210,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     async function fetchAgremiado(id: string) {
-      let res = await fetch(`http://localhost:3000/api/agremiados/${id}`)
+      let res = await fetch(`https://setep.vercel.app/api/agremiados/${id}`)
       let data = await res.json()
       setAgremiado(data.foundAgremiado)
     }
