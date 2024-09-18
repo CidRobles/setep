@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { connectDB, dbConnect } from "@/lib/mongodb";
 import Agremiado from "@/lib/models/Agremiado";
+import bcrypt from 'bcrypt'
 
 export const authOptions = {
     providers: [
@@ -20,13 +21,13 @@ export const authOptions = {
                 // Fetch user by email
                 const agremiado = await Agremiado.findOne({ expediente: credentials.expediente });
                 if (!agremiado) {
-                    throw new Error(`No existe ningún agremiado con expediente ${credentials.expediente}`);
+                    throw new Error(`El expediente ${credentials.expediente} no está registrado en el sistema.`);
                 }
 
                 // Compare password
-                const isValidPassword = (String(credentials.password).toUpperCase() == String(agremiado.rfc).slice(-4).toUpperCase())
+                const isValidPassword = await bcrypt.compare(String(credentials.password).toUpperCase(), agremiado.password)
                 if (!isValidPassword) {
-                    throw new Error("Invalid credentials");
+                    throw new Error("La contraseña es incorrecta.");
                 }
 
                 // If everything is fine, return the user object

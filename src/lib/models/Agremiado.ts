@@ -28,18 +28,19 @@ const AgremiadoSchema = new Schema({
     laborales: {
         cargo: String,
         nivel: String,
-        region: String, 
+        region: String,
         seccion: String,
         ingresoSep: Date,
         at: Boolean,
-        pt: Boolean, 
+        pt: Boolean,
         st: Boolean,
         concepto33: Boolean,
-        issstep: Boolean,        
+        issstep: Boolean,
     },
     direccion: {
         calle: String,
         exterior: String,
+        colonia: String,
         interior: String,
         ciudad: String,
         localidad: String,
@@ -50,7 +51,8 @@ const AgremiadoSchema = new Schema({
         celular: String,
         email: {
             type: String,
-            unique: true
+            unique: true,
+            sparse: true
         },
     },
     password: String

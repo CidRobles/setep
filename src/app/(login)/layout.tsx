@@ -2,8 +2,6 @@
 import React from 'react';
 import { Poppins } from "next/font/google";
 import "../globals.css";
-import logo from "../../../public/SETEP-logo.png"
-import Image from "next/image";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider, Layout } from "antd";
 import { orange } from "@ant-design/colors";

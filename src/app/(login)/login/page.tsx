@@ -1,40 +1,41 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import { Row, Col, Flex, Card, Button, Form, Input, Space } from 'antd';
+import { Row, Col, Flex, Card, Button, Form, Input, Space, Alert } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import Password from 'antd/es/input/Password';
 import Image from 'next/image';
-import logo from '@@/SETEP-logo.png'
 
 const Login: React.FC = () => {
     const router = useRouter()
+    const [error, setError] = useState('')
     const onFinish = async (values: any) => {
         const { expediente, password } = values
-        console.log('Received values of form: ', values);
         const result = await signIn('credentials', {
             redirect: false,
             expediente,
             password
-        })
+        })        
 
         if (result?.ok) {
             router.push('/')
-        } else {
-            console.log(`Error: ${result?.error}`)
+        } else if (result?.status == 401) {
+            setError(`${result.error}`)
         }
     };
     return (
         <Flex align='center' justify='center' style={{ minHeight: 'calc(100vh - 2rem)' }}>
-            <Row gutter={16}>
+            <Row gutter={16} style={{ minWidth: '80%' }}>
                 <Col sm={{ span: 24 }} lg={{ span: 12 }}>
-                    <Flex justify='center' align='center'>
-                        <Image src={logo} alt='SETEP' style={{ maxWidth: '50%', height: 'auto' }}></Image>
+                    <Flex justify='center' align='center' style={{ height: '100%' }}>
+                        <Image src={'https://s3.amazonaws.com/setep.app/fotos/SETEP-logo.png'} alt='SETEP' width={240} height={240}>
+                        </Image>
                     </Flex>
                 </Col>
                 <Col sm={{ span: 24 }} lg={{ span: 12 }}>
                     <Card>
+                        <Alert type='error' message={error} style={{ display: error == '' ? 'none' : 'block', marginBottom: 16 }}></Alert>
                         <Form name="login" layout='vertical' onFinish={onFinish}>
                             <Space direction="vertical" size={'middle'} style={{ width: '100%' }}>
                                 <FormItem

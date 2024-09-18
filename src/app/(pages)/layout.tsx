@@ -1,7 +1,6 @@
 "use client"
 import { Inter } from "next/font/google";
 import "../globals.css";
-import logo from "@@/SETEP-logo.png"
 import Image from "next/image";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider, Layout, Menu, Flex, Spin } from "antd";
@@ -31,8 +30,6 @@ export function AppLayout({
 }>) {
   const { data: session, status } = useSession()
   const router = useRouter()
-
-  console.log(`Status: ${status}`)
 
   if (status === 'loading') {
     return (
@@ -65,8 +62,10 @@ export function AppLayout({
         >
           <Flex justify="center" style={{
             marginBottom: '1rem'
-          }}><Image alt='SETEP' src={logo} width={100}></Image></Flex>
-          <Menu mode="inline" defaultSelectedKeys={['4']} items={items} />
+          }}>
+            <Image alt='SETEP' src={'https://s3.amazonaws.com/setep.app/fotos/SETEP-logo.png'} width={100} height={100}></Image>
+          </Flex>
+          {/* <Menu mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
         </Sider>
         <Layout style={{ minHeight: '100vh' }}>
           <Header style={{ padding: 0, backgroundColor: '#fff' }} />
