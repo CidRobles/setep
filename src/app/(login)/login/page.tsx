@@ -16,7 +16,7 @@ const Login: React.FC = () => {
             redirect: false,
             expediente,
             password
-        })        
+        })
 
         if (result?.ok) {
             router.push('/')
@@ -26,14 +26,14 @@ const Login: React.FC = () => {
     };
     return (
         <Flex align='center' justify='center' style={{ minHeight: 'calc(100vh - 2rem)' }}>
-            <Row gutter={16} style={{ minWidth: '80%' }}>
-                <Col sm={{ span: 24 }} lg={{ span: 12 }}>
-                    <Flex justify='center' align='center' style={{ height: '100%' }}>
+            <Row gutter={[16, 48]} style={{ width: '100%' }}>
+                <Col span={24}>
+                    <Flex vertical justify='center' align='center' style={{ height: '100%' }}>
                         <Image src={'https://s3.amazonaws.com/setep.app/fotos/SETEP-logo.png'} alt='SETEP' width={240} height={240}>
                         </Image>
                     </Flex>
                 </Col>
-                <Col sm={{ span: 24 }} lg={{ span: 12 }}>
+                <Col sm={{ span: 24 }} md={{ span: 18, push: 3 }} xl={{ span: 12, push: 6 }} style={{ width: '100%' }}>
                     <Card>
                         <Alert type='error' message={error} style={{ display: error == '' ? 'none' : 'block', marginBottom: 16 }}></Alert>
                         <Form name="login" layout='vertical' onFinish={onFinish}>
@@ -64,14 +64,14 @@ const Login: React.FC = () => {
                                     <Password />
                                 </FormItem>
                                 <FormItem>
-                                    <Row gutter={16}>
-                                        <Col span={12}>
+                                    <Row gutter={[16, 16]}>
+                                        <Col sm={24} md={8}>
                                             <Button block type="primary" htmlType="submit">
                                                 Iniciar sesión
                                             </Button>
                                         </Col>
-                                        <Col offset={6} span={6}>
-                                            <Button block type="text">
+                                        <Col sm={24} md={{ span: 8, push: 8 }}>
+                                            <Button block type="default">
                                                 Olvidé mi contraseña
                                             </Button>
                                         </Col>
