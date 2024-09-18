@@ -105,11 +105,11 @@ const Credencial = (data: any) => {
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={[styles.credencial, { border: '1pt solid #000' }]}>
-                    <Image src="httpss://s3.amazonaws.com/setep.app/fotos/credencial_front.jpg" style={styles.pageBackground}></Image>
+                    <Image src="https://s3.amazonaws.com/setep.app/fotos/credencial_front.jpg" style={styles.pageBackground}></Image>
                     <View style={styles.frontGrid}>
                         <View style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'center', alignSelf: 'center' }}>
                             <Image
-                                src={`httpss://s3.amazonaws.com/setep.app/fotos/${foto}`}
+                                src={`https://s3.amazonaws.com/setep.app/fotos/${foto}`}
                                 style={{ maxWidth: '65%', alignSelf: 'center', marginBottom: '0.25cm' }}></Image>
                         </View>
                         <View>
@@ -123,7 +123,7 @@ const Credencial = (data: any) => {
                     </View>
                 </View>
                 <View style={[styles.credencial, { border: '1pt solid #000' }]}>
-                    <Image src="httpss://s3.amazonaws.com/setep.app/fotos/credencial_back.jpg" style={styles.pageBackground}></Image>
+                    <Image src="https://s3.amazonaws.com/setep.app/fotos/credencial_back.jpg" style={styles.pageBackground}></Image>
                 </View>
             </Page>
         </Document>
