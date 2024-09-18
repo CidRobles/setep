@@ -6,7 +6,7 @@ import { connectDB, dbConnect } from "@/lib/mongodb";
 import Agremiado from "@/lib/models/Agremiado";
 import bcrypt from 'bcrypt'
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
