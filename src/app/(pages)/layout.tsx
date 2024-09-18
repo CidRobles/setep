@@ -23,11 +23,9 @@ const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].
 
 const inter = Inter({ subsets: ["latin"] });
 
-function AppLayout({
+const AppLayout = ({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}) => {
   const { data: session, status } = useSession()
   const router = useRouter()
 
