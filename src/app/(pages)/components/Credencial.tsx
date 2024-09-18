@@ -7,39 +7,39 @@ Font.register({
     family: 'Inter',
     fonts: [
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf',
             fontWeight: 100,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZhrib2Bg-4.ttf',
             fontWeight: 200,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZhrib2Bg-4.ttf',
             fontWeight: 300,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.ttf',
             fontWeight: 400,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZhrib2Bg-4.ttf',
             fontWeight: 500,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZhrib2Bg-4.ttf',
             fontWeight: 600,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf',
             fontWeight: 700,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZhrib2Bg-4.ttf',
             fontWeight: 800,
         },
         {
-            src: 'http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZhrib2Bg-4.ttf',
+            src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZhrib2Bg-4.ttf',
             fontWeight: 900,
         },
     ],
@@ -105,11 +105,11 @@ const Credencial = (data: any) => {
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={[styles.credencial, { border: '1pt solid #000' }]}>
-                    <Image src="https://s3.amazonaws.com/setep.app/fotos/credencial_front.jpg" style={styles.pageBackground}></Image>
+                    <Image src="httpss://s3.amazonaws.com/setep.app/fotos/credencial_front.jpg" style={styles.pageBackground}></Image>
                     <View style={styles.frontGrid}>
                         <View style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'center', alignSelf: 'center' }}>
                             <Image
-                                src={`https://s3.amazonaws.com/setep.app/fotos/${foto}`}
+                                src={`httpss://s3.amazonaws.com/setep.app/fotos/${foto}`}
                                 style={{ maxWidth: '65%', alignSelf: 'center', marginBottom: '0.25cm' }}></Image>
                         </View>
                         <View>
@@ -123,7 +123,7 @@ const Credencial = (data: any) => {
                     </View>
                 </View>
                 <View style={[styles.credencial, { border: '1pt solid #000' }]}>
-                    <Image src="https://s3.amazonaws.com/setep.app/fotos/credencial_back.jpg" style={styles.pageBackground}></Image>
+                    <Image src="httpss://s3.amazonaws.com/setep.app/fotos/credencial_back.jpg" style={styles.pageBackground}></Image>
                 </View>
             </Page>
         </Document>
