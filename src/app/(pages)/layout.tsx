@@ -23,7 +23,7 @@ const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function AppLayout({
+function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
